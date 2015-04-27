@@ -4,7 +4,7 @@ mksrc.py is a template based file generator that's geared towards Unreal 4, but 
 
 ###Usage
 
-mksrc.py should be called with a list of files that you want to generate along with the templates you want to apply to them. The syntax is Filename-Template. You can separate multiple files with commas or spaces. If no template is specified, mksrc will use the default template. The provided one contains a header and cpp file that include the .generated.h file in the header, and the project PCH & header in the cpp file. 
+mksrc.py should be called with a list of files that you want to generate along with the templates you want to apply to them. The syntax is Filename-Template. You can create multiple files by separating them with commas or spaces. If no template is specified, mksrc will use the default template. The provided one contains a header and cpp file that include the .generated.h file in the header, and the project PCH & normal header in the cpp file. 
 
 ```sh 
 mksrc.py AFileUsingTheDefaultTemplate AUObject-UObject,AUStruct-UStruct
@@ -17,6 +17,7 @@ mksrc.py LetsGetThisPuppyInVs -g
 ```
 
 Since mksrc depends on knowing where your project is to generate the VS files, you need to set this up to use this feature. Fortunately, this is easy to do with the -sp switch. Just navigate to the folder that your .uproject is and run mksrc.py -sp. This is also useful to change projects if you are working on multiple. 
+
 ##Setup
 
 - Get the files

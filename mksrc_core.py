@@ -10,8 +10,12 @@ class colors:
     BOLD = '\033[1m'
     UNDERLINE = '\033[4m'
 
+
+WithColors = True
 def PrintColored(color,str):
-	print color + str + colors.RESET
+	if WithColors:
+		str = color + str + colors.RESET
+	print str
 
 def FatalError(str):
 	PrintColored(colors.RED,str)

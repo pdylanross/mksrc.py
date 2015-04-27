@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-import os, sys, json
+import os, sys, json,mksrc_core
 from mksrc_core import *
 from subprocess import call
 
@@ -17,12 +17,14 @@ if os.path.isfile(ConfigFilename): #Load conf
 	except ValueError as e:
 		FatalError("Error loading configuration: " + str(e))
 else: #Create default conf & save it
-	Config = {"UProjectFile":"","UEVersionSelector":"","ProjectPCH":""}
+	Config = {"UProjectFile":"","UEVersionSelector":"","ProjectPCH":"","UseColors":True}
 	try:
 		SaveJsonToFile(ConfigFilename,Config)
 	except IOError as e:
 		FatalError("Error saving default configuration: " + str(e))
 
+if not Config["UseColors"]:
+	mksrc_core.WithColors=False
 
 DEBUG = False
 
@@ -43,7 +45,7 @@ if "-h" in sys.argv or "-help" in sys.argv or len(sys.argv)==1:
 	print "\tmksrc.py File-Template,File2-Template2...\n"
 
 	print "\t-h,-help\t\tHow you got here."
-	print "\t-debug\t\t\tShow Verbose output."
+	print "\t-debug\t\t\tShow some debug info."
 	print "\t-g,-generate\t\tGenerates project files. Need to set up config first."
 	print "\t-sp,-set-project\tSets the current project to the project in this directory"
 	exit()
@@ -135,9 +137,23 @@ for Filename,Template in FilesToGenerate.iteritems():
 
 	CreatedFiles = LoadedTemplates[Template].ApplyFormatting(Replacements)
 
+	ShouldSkip = False
+
+	for Filetype in CreatedFiles:
+		FilePath = os.path.join(CurrentDir,Filename+"."+Filetype)
+		if os.path.isfile(FilePath):
+			ShouldSkip = True
+			break
+
+	if ShouldSkip:
+		Nag("Skipping " + Filename + " because that file already exists")
+		continue
+
 	#save the files
 	for Filetype,FileContents in CreatedFiles.iteritems():
 		try:
+			
+
 			with open(os.path.join(CurrentDir,Filename+"."+Filetype),"w+") as File:
 				File.write(FileContents)
 				GoodOutput("Created " + Filename + "." + Filetype)
