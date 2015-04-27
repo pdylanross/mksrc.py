@@ -44,7 +44,6 @@ The syntax for fields that will be replaced is {{Name}}. As of right now, mksrc 
 
 ```cpp
 !!!__h__
-!!!__h__
 /*
 	Generated with mksrc.py
 */
