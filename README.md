@@ -40,21 +40,34 @@ The extension is without the dot. For example, a section for a c++ header file w
 !!!__h__
 ```
 
-The syntax for fields that will be replaced is {{Name}}. As of right now, mksrc will replace {{Filename}} and {{PCH}}. This can easily be extended by adding more fields into the Replacements var that's about 130 lines into mksrc.py. You can look at the provided templates to get a better idea of how they're put together. Just as a quick example though, here's the default template:
+The syntax for fields that will be replaced is {{Name}}. As of right now, mksrc will replace {{Filename}} and {{PCH}}. This can easily be extended by adding more fields into the Replacements var that's about 130 lines into mksrc.py. You can look at the provided templates to get a better idea of how they're put together. Just as a quick example though, here's the AActor template:
 
-```
+```cpp
+!!!__h__
 !!!__h__
 /*
 	Generated with mksrc.py
 */
 #pragma once
 
+#include "GameFramework/Actor.h"
 #include "{{Filename}}.generated.h"
 
-
+UCLASS(BlueprintType)
+class A{{Filename}} : public AActor
+{
+	GENERATED_BODY()
+public:
+	A{{Filename}}(const FObjectInitializer& ObjectInitializer);
+};
 
 !!!__cpp__
 #include "{{PCH}}"
 #include "{{Filename}}.h"
+
+A{{Filename}}::A{{Filename}}(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer)
+{
+	
+}
 ```
 
