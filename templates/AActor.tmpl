@@ -1,0 +1,25 @@
+!!!__h__
+/*
+	Generated with mksrc.py
+*/
+#pragma once
+
+#include "GameFramework/Actor.h"
+#include "{{Filename}}.generated.h"
+
+UCLASS(BlueprintType)
+class A{{Filename}} : public AActor
+{
+	GENERATED_BODY()
+public:
+	A{{Filename}}(const FObjectInitializer& ObjectInitializer);
+};
+
+!!!__cpp__
+#include "{{PCH}}"
+#include "{{Filename}}.h"
+
+A{{Filename}}::A{{Filename}}(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer)
+{
+	
+}

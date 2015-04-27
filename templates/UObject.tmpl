@@ -1,0 +1,24 @@
+!!!__h__
+/*
+	Generated with mksrc.py
+*/
+#pragma once
+
+#include "{{Filename}}.generated.h"
+
+UCLASS(BlueprintType)
+class U{{Filename}} : public UObject
+{
+	GENERATED_BODY()
+public:
+	U{{Filename}}(const FObjectInitializer& ObjectInitializer);
+};
+
+!!!__cpp__
+#include "{{PCH}}"
+#include "{{Filename}}.h"
+
+U{{Filename}}::U{{Filename}}(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer)
+{
+
+}
