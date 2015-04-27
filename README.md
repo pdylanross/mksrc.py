@@ -40,5 +40,21 @@ The extension is without the dot. For example, a section for a c++ header file w
 !!!__h__
 ```
 
-The syntax for fields that will be replaced is {{Name}}. As of right now, mksrc will replace {{Filename}} and {{PCH}}. This can easily be extended by adding more fields into the Replacements var that's about 130 lines into mksrc.py. You can look at the provided templates to get a better idea of how they're put together. 
+The syntax for fields that will be replaced is {{Name}}. As of right now, mksrc will replace {{Filename}} and {{PCH}}. This can easily be extended by adding more fields into the Replacements var that's about 130 lines into mksrc.py. You can look at the provided templates to get a better idea of how they're put together. Just as a quick example though, here's the default template:
+
+```
+!!!__h__
+/*
+	Generated with mksrc.py
+*/
+#pragma once
+
+#include "{{Filename}}.generated.h"
+
+
+
+!!!__cpp__
+#include "{{PCH}}"
+#include "{{Filename}}.h"
+```
 
