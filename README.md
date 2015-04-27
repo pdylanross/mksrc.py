@@ -21,7 +21,8 @@ Since mksrc depends on knowing where your project is to generate the VS files, y
 
 - Get the files
 - Edit mksrc.conf and set UEVersionSelector to point towards your version selector. For Launcher installed versions this is in %path-to-unreal%/Launcher/Engine/Binaries/Win64/UnrealVersionSelector.exe. For source built versions it's %path-to-unreal%/Engine/Binaries/Win64/UnrealVersionSelector.exe. Make sure to include the exe in the path. 
-- Navigate to your root project folder (wherever your .uproject is) in your command line environment of choice and run mksrc.py -sp. 
+- Navigate to your root project folder (wherever your .uproject is) in your command line environment of choice and run mksrc.py -sp.
+- If, for some reason, your project PCH isn't named the same thing as your project, then you'll need to change that in mksrc.conf. Keep in mind that running mksrc.py -sp will overwrite that change. 
 
 ##Templates
 
