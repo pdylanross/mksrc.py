@@ -70,3 +70,6 @@ A{{Filename}}::A{{Filename}}(const FObjectInitializer& ObjectInitializer) : Supe
 }
 ```
 
+##About
+
+mksrc.py was a weekend project that I used to learn python. Any advice or critique is much appreciated. I don't really plan on spending a whole lot more time on this other than fixing bugs and making templates. 
